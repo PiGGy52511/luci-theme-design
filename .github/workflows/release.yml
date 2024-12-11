@@ -28,8 +28,8 @@ jobs:
       - name: Download SDK
         run: |
           wget https://archive.openwrt.org/releases/23.05.5/targets/armsr/armv8/openwrt-sdk-23.05.5-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz
-          tar -xvf openwrt-sdk-23.05.5-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz
-          mv openwrt-sdk-23.05.5-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz openwrt-sdk
+          mkdir openwrt-sdk
+          tar -xvf openwrt-sdk-23.05.5-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz -C openwrt-sdk
 
       - name: Build
         id: build
