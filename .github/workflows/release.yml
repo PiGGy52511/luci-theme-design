@@ -27,16 +27,16 @@ jobs:
 
       - name: Download SDK
         run: |
-          wget https://archive.openwrt.org/releases/18.06.9/targets/x86/64/openwrt-sdk-18.06.9-x86-64_gcc-7.3.0_musl.Linux-x86_64.tar.xz
-          xz -d openwrt-sdk-18.06.9-x86-64_gcc-7.3.0_musl.Linux-x86_64.tar.xz
-          tar -xf openwrt-sdk-18.06.9-x86-64_gcc-7.3.0_musl.Linux-x86_64.tar
-          mv openwrt-sdk-18.06.9-x86-64_gcc-7.3.0_musl.Linux-x86_64 openwrt-sdk
+          wget https://archive.openwrt.org/releases/23.05.5/targets/armsr/armv8/openwrt-sdk-23.05.5-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz
+          xz -d openwrt-sdk-23.05.5-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz
+          tar -xf openwrt-sdk-23.05.5-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz
+          mv openwrt-sdk-23.05.5-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz
 
       - name: Build
         id: build
         run: | 
           cd openwrt-sdk
-          git clone  --depth=1 -b "${{ github.ref_name }}" https://github.com/gngpp/luci-theme-design.git package/luci-theme-design
+          git clone  --depth=1 -b "${{ github.ref_name }}" https://github.com/PiGGy52511/luci-theme-design.git package/luci-theme-design
           ./scripts/feeds update -a && ./scripts/feeds install -a
           echo "CONFIG_PACKAGE_luci-theme-design=y" >> .config
           make defconfig
